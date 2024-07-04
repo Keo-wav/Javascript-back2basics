@@ -30,15 +30,13 @@
         <script>
             // Réaliser l'affichage des nombres de 0 à 200.
             document.writeln('Display numbers from 0 to 200 : <br /><br />')
-
             for (i = 0 ; i <= 200 ; i++) {
                 document.writeln(i + ' ')
             }
 
             document.writeln('<br /><br />')
             // Réaliser l'affichage de la suite de Fibonacci jusqu'à 666 (chaque nombre est la somme des deux précédents)
-            document.writeln('Display numbers from the Fibonacci sequence : <br /><br />')
-            
+            document.writeln('Display numbers from the Fibonacci sequence : <br /><br />')   
             let previous = 0
             let base = 1
             let sum = 0
@@ -47,13 +45,11 @@
                 previous = base
                 base = sum
                 document.writeln(sum)
-                document.writeln('<br /><br />')
             }
 
             document.writeln('<br /><br />')
             // Réaliser l'affichage des nombres premiers entre 2 et 66 (nb premier est divisible par 1 ou lui-même)
-            document.writeln('Display prime numbers between 2 and 66 : <br /><br />')
-            
+            document.writeln('Display prime numbers between 2 and 66 : <br /><br />')    
             for (let i = 2 ; i <= 66 ; i++) {
                 let notPrime = false
                 for (let j = 2 ; j < i ; j++) {
@@ -65,6 +61,67 @@
                     document.writeln(i)
                 }
             }
+
+        </script>
+
+        <h2>EX 3 : FUNCTIONS</h2>
+
+        <script>
+            // MAX DE DEUX NOMBRES : écrire une fonction qui, donnée 2 nombres, retourne le plus grand
+            function MaxOf2(arg1, arg2) {
+                if (arg1 > arg2) {
+                    return arg1
+                } else if ( arg2 > arg1) {
+                    return arg2
+                } else
+                    throw console.error('arguments are equal you bitch');
+
+                }
+            document.writeln(MaxOf2(2, 3))
+            document.writeln('<br /><br />')
+            // document.writeln(MaxOf2(6, 6)) // console.error
+
+            // MAX DE TROIS NOMBRES : écrire une fonction qui, donnée 3 nombres, retourne le plus grand
+            function MaxOf3(arg1, arg2, arg3) {
+                if (arg1 > arg2 && arg1 > arg3) {
+                    return arg1
+                } else if (arg2 > arg1 && arg2 > arg3) {
+                    return arg2
+                } else if (arg3 > arg1 && arg3 > arg2) {
+                    return arg3
+                } else {
+                    throw console.error('arguments are equal you bitch');
+                }
+            }
+            document.writeln(MaxOf3(3, 4, 5))
+            document.writeln(MaxOf3(3, 1, 2))
+            // document.writeln(MaxOf3(3, 3, 3)) // console.error
+            document.writeln('<br /><br />')
+
+            // MAX DE TROIS NOMBRES BIS : écrire une fonction qui, donnée 3 nombres, retourne le plus grand en utilisant la fonction max de deux nombres
+            function MaxOf3bis(arg1, arg2, arg3) {
+                let x = MaxOf2(arg1, arg2)
+                let y = MaxOf2(arg2, arg3)
+                return MaxOf2(x, y)
+            }
+            document.writeln(MaxOf3bis(3, 4, 5))
+            document.writeln(MaxOf3bis(3, 1, 2))
+            // document.writeln(MaxOf3bis(3, 3, 3)) // console.error ?
+            document.writeln('<br /><br />')
+
+            // FACTORIELLE : écrire une fonction factorielle qui retourne la factorielle d'un nombre rentré en paramètre. 
+            // Factorielle d'un nombre : résultat de la multiplication de tous les entiers positifs <= à ce nombre
+            function Factorial(n) {
+                let result = n
+                if (n > 1) {
+                    for (i = 1 ; i < n ; i++) {
+                        result *= i
+                        console.log(result)
+                    }
+                }
+                return result
+            }
+            document.writeln(Factorial(5))
 
         </script>
 </body>
