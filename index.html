@@ -3,126 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAVASCRIPT TRAINING</title>
+    <title>Chapter 6 : OOP</title>
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif;">
-    <h1>JAVASCRIPT TRAINING</h1>
-    <p>With the book : Javascript & Angular : from language basics to a full web app (ENI Editions)</p>
-    <h2>EX 1 : DATA TYPES</h2>
-        <script>
-            let tableau = ['a', 'b', 6, 'd', 3, 'b', 99, 'e', 6, 'e', 'c', 15, 'f', 8, 'b', 6, 'f', 5, 'b', 338576, 'f', 57, 'e']
+<body>
+    <h1>Chapter 6 : Object Oriented Programming in Javascript</h1>
+    <p>Challenge : Pokemon class</p>
+    <script>
 
-            // afficher 1er élément de la variable tableau
-            document.writeln('First element of the tab is : ' + tableau[0] + '<br />')
+        class Attack {
+            constructor(name, dmg) {
+                this._name = name
+                this.dmg = dmg
+            }
+        }
 
-            // additionner 3eme et 5eme elements et afficher resultat
-            document.writeln('3rd and 5th elements are ' + tableau[2] + ' and ' + tableau[4] +
-                ' and their sum is : ' + (tableau[2] + tableau[4]) + '.<br />')
-
-            // créer nouveau tableau Alphabet avec toutes les lettres de l'alphabet. 
-            let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-            // Récupérer 8eme élement du tableau et le rechercher dans Alphabet. Afficher son index.
-            let index = tableau.indexOf(tableau[7])
-            document.writeln('The 8th element in the tab "tableau" is : ' + tableau[7] + ' and its index in "Alphabet" is ' + index + '.')
-        </script>
-    
-    <h2>EX 2 : LOOPS / CONDITIONS</h2>
-        <script>
-            // Réaliser l'affichage des nombres de 0 à 200.
-            document.writeln('Display numbers from 0 to 200 : <br /><br />')
-            for (i = 0 ; i <= 200 ; i++) {
-                document.writeln(i + ' ')
+        class Pokemon {
+            constructor(name, id, height, weight, type, hp, attack1, attack2) {
+                this._name = name
+                this.id = id
+                this.height = height
+                this.weight = weight
+                this.type = type
+                this.hp = hp
+                this.attack1 = attack1
+                this.attack2 = attack2
             }
 
-            document.writeln('<br /><br />')
-            // Réaliser l'affichage de la suite de Fibonacci jusqu'à 666 (chaque nombre est la somme des deux précédents)
-            document.writeln('Display numbers from the Fibonacci sequence : <br /><br />')   
-            let previous = 0
-            let base = 1
-            let sum = 0
-            while (previous + base < 666) {
-                sum = previous + base
-                previous = base
-                base = sum
-                document.writeln(sum)
-            }
-
-            document.writeln('<br /><br />')
-            // Réaliser l'affichage des nombres premiers entre 2 et 66 (nb premier est divisible par 1 ou lui-même)
-            document.writeln('Display prime numbers between 2 and 66 : <br /><br />')    
-            for (let i = 2 ; i <= 66 ; i++) {
-                let notPrime = false
-                for (let j = 2 ; j < i ; j++) {
-                    if (i % j == 0) {
-                        notPrime = true
-                    } 
-                }
-                if (!notPrime) {
-                    document.writeln(i)
-                }
-            }
-
-        </script>
-
-        <h2>EX 3 : FUNCTIONS</h2>
-
-        <script>
-            // MAX DE DEUX NOMBRES : écrire une fonction qui, donnée 2 nombres, retourne le plus grand
-            function MaxOf2(arg1, arg2) {
-                if (arg1 > arg2) {
-                    return arg1
-                } else if ( arg2 > arg1) {
-                    return arg2
-                } else
-                    throw console.error('arguments are equal you bitch');
-
-                }
-            document.writeln(MaxOf2(2, 3))
-            document.writeln('<br /><br />')
-            // document.writeln(MaxOf2(6, 6)) // console.error
-
-            // MAX DE TROIS NOMBRES : écrire une fonction qui, donnée 3 nombres, retourne le plus grand
-            function MaxOf3(arg1, arg2, arg3) {
-                if (arg1 > arg2 && arg1 > arg3) {
-                    return arg1
-                } else if (arg2 > arg1 && arg2 > arg3) {
-                    return arg2
-                } else if (arg3 > arg1 && arg3 > arg2) {
-                    return arg3
+            attack(pokemon) {
+                if (pokemon.hp <= ((pokemon.hp)/5)) {
+                    console.log(this._name + ' has attacked. Damage : ' + this.attack2.dmg + '. ')
                 } else {
-                    throw console.error('arguments are equal you bitch');
+                    console.log(this._name + ' has attacked. Damage : ' + this.attack1.dmg + '. ')
                 }
             }
-            document.writeln(MaxOf3(3, 4, 5))
-            document.writeln(MaxOf3(3, 1, 2))
-            // document.writeln(MaxOf3(3, 3, 3)) // console.error
-            document.writeln('<br /><br />')
+        }
 
-            // MAX DE TROIS NOMBRES BIS : écrire une fonction qui, donnée 3 nombres, retourne le plus grand en utilisant la fonction max de deux nombres
-            function MaxOf3bis(arg1, arg2, arg3) {
-                let x = MaxOf2(arg1, arg2)
-                let y = MaxOf2(arg2, arg3)
-                return MaxOf2(x, y)
-            }
-            document.writeln(MaxOf3bis(3, 4, 5))
-            document.writeln(MaxOf3bis(3, 1, 2))
-            // document.writeln(MaxOf3bis(3, 3, 3)) // console.error ?
-            document.writeln('<br /><br />')
+        let pikachu = new Pokemon('Pikachu', 25, 40, 6, 'Electric', 82, new Attack('Static', 10), new Attack('Lightning Rod', 25))
+        let eevee = new Pokemon('Eevee', 133, 30, 6.5, 'Normal', 70, new Attack('Adaptability', 9), new Attack('Anticipation', 15))
 
-            // FACTORIELLE : écrire une fonction factorielle qui retourne la factorielle d'un nombre rentré en paramètre. 
-            // Factorielle d'un nombre : résultat de la multiplication de tous les entiers positifs <= à ce nombre
-            function Factorial(n) {
-                let result = n
-                if (n > 1) {
-                    for (i = 1 ; i < n ; i++) {
-                        result *= i
-                        console.log(result)
-                    }
-                }
-                return result
-            }
-            document.writeln(Factorial(5))
+        console.log(pikachu)
+        console.log(eevee)
 
-        </script>
+        pikachu.attack(eevee)
+
+    </script>
 </body>
 </html>
