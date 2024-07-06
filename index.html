@@ -7,7 +7,12 @@
 </head>
 <body>
     <h1>Chapter 6 : Object Oriented Programming in Javascript</h1>
-    <p>Challenge : Pokemon class</p>
+    <h2>Pokemon fight : Pikachu vs Eevee</h2>
+    <ol>
+        <li>Game start : choose which pokemon strikes first.</li>
+        <li>Pokemons attack turn by turn</li>
+        <li>When a Pokemon hp reaches 0, the other one wins</li>
+    </ol>
     <script>
 
         class Attack {
@@ -30,21 +35,44 @@
             }
 
             attack(pokemon) {
-                if (pokemon.hp <= ((pokemon.hp)/5)) {
-                    console.log(this._name + ' has attacked. Damage : ' + this.attack2.dmg + '. ')
-                } else {
-                    console.log(this._name + ' has attacked. Damage : ' + this.attack1.dmg + '. ')
-                }
+                let damage
+                let attack
+                if (this.hp >= (this.hp * 20) / 100) { attack = this.attack1 } 
+                else { attack = this.attack2 }
+                damage = attack.dmg
+                return damage
             }
         }
 
         let pikachu = new Pokemon('Pikachu', 25, 40, 6, 'Electric', 82, new Attack('Static', 10), new Attack('Lightning Rod', 25))
         let eevee = new Pokemon('Eevee', 133, 30, 6.5, 'Normal', 70, new Attack('Adaptability', 9), new Attack('Anticipation', 15))
 
-        console.log(pikachu)
-        console.log(eevee)
+        // console.log(pikachu)
+        // console.log(eevee)
 
         pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+        eevee.attack(pikachu)
+
+        pikachu.attack(eevee)
+
 
     </script>
 </body>
