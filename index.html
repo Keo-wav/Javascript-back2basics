@@ -13,18 +13,23 @@
         <li>Pokemons attack turn by turn</li>
         <li>When a Pokemon hp reaches 0, the other one wins</li>
     </ol>
+
+    <div id="battlelog">
+        <!-- Will contain all battle logs -->
+    </div>
+
     <script>
 
         class Attack {
             constructor(name, dmg) {
-                this._name = name
+                this.name = name
                 this.dmg = dmg
             }
         }
 
         class Pokemon {
             constructor(name, id, height, weight, type, hp, attack1, attack2) {
-                this._name = name
+                this.name = name
                 this.id = id
                 this.height = height
                 this.weight = weight
@@ -33,47 +38,77 @@
                 this.attack1 = attack1
                 this.attack2 = attack2
             }
-
             attack(pokemon) {
-                let damage
-                let attack
-                if (this.hp >= (this.hp * 20) / 100) { attack = this.attack1 } 
-                else { attack = this.attack2 }
-                damage = attack.dmg
-                return damage
+                if (this.hp >= (this.hp * 20) / 100) { 
+                    if (Math.random()*100 >= 90) {
+                        return this.attack1.dmg * 2
+                    } else {
+                        return this.attack1.dmg
+                    }
+                } else { 
+                    if (Math.random()*100 >= 90) {
+                        return this.attack2.dmg * 2
+                    } else {
+                        return this.attack2.dmg
+                    }
+                }
             }
         }
 
         let pikachu = new Pokemon('Pikachu', 25, 40, 6, 'Electric', 82, new Attack('Static', 10), new Attack('Lightning Rod', 25))
         let eevee = new Pokemon('Eevee', 133, 30, 6.5, 'Normal', 70, new Attack('Adaptability', 9), new Attack('Anticipation', 15))
-
         // console.log(pikachu)
         // console.log(eevee)
 
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
+        function CoinFlip() {
+            if (Math.random()*100 >= 50) {
+                return true
+            } else {
+                return false
+            }
+        }
 
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
+        function Log(message) {
+            let log = document.getElementById('battlelog')
+            let p = document.createElement('p');
+            p.innerHTML = message;
+            log.appendChild(p);
+        }
+            
+        function App(pokemon1, pokemon2) {
+            let p1 = pokemon1
+            let p2 = pokemon2
+            let turn = 0
 
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
+            if (CoinFlip()) {
+                p1 = pokemon2
+                p2 = pokemon1
+                log(p1.name + ' starts first !')
+            } else {
+                log(p2.name + ' starts first !')
+            }
 
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
+            do {
+                let baseLifeP1 = p1.hp
+                let baseLifeP2 = p2.hp
+                let remainingLifeP1
+                let remainingLifeP2
 
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
-
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
-
-        pikachu.attack(eevee)
-        eevee.attack(pikachu)
-
-        pikachu.attack(eevee)
-
-
+                if (turn % 2 === 0) {
+                    remainingLifeP2 = baseLifeP2 - p1.attack(p2)
+                    document.writeln(p1.name + ' attacks ' + p2.name + '. ' + 
+                    p2.name + ' has ' + remainingLifeP2 + 'hp left.<br /><br />')
+                    turn += 1
+                } else {
+                    remainingLifeP1 = baseLifeP1 - p2.attack(p1)
+                    document.writeln(p2.name + ' attacks ' + p1.name + '. ' + 
+                    p1.name + ' has ' + remainingLifeP1 + 'hp left.<br /><br />')
+                    turn += 1
+                }
+            } while (p1.hp > 0 && p2.hp > 0)
+        }
+        
+        App(pikachu, eevee)
     </script>
 </body>
 </html>
