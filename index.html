@@ -68,6 +68,13 @@
             let p2 = pokemon2
             let turn = 0
 
+        function FightInfo(pokemon1, pokemon2) {
+            let log = document.getElementById('battlelog')
+            let span = document.createElement('span')
+            Log(pokemon1.name + ' starts with ' + pokemon1.hp + 'hp. ')
+            Log(pokemon2.name + ' starts with ' + pokemon2.hp + 'hp. ')
+        }
+
             let coinFlip = CoinFlip()
             console.log(coinFlip)
             if (coinFlip) {
@@ -80,20 +87,20 @@
                 Log(p1.name + ' starts first !')
             }
 
-            do {
-                let baseLifeP1 = p1.hp
-                let baseLifeP2 = p2.hp
-                let remainingLifeP1
-                let remainingLifeP2
+            FightInfo(p1, p2)
 
+            do {
+                let damage
                 if (turn % 2 === 0) {
-                    p2.hp -= p1.attack(p2)
-                    Log(p1.name + ' attacks ' + p2.name + '. ' + 
+                    damage = p1.attack(p2)
+                    p2.hp -= damage
+                    Log(p1.name + ' attacks ' + p2.name + ' for ' + damage + '. ' + 
                     p2.name + ' has ' + p2.hp + 'hp left.')
                     turn += 1
                 } else {
-                    p1.hp -= p2.attack(p1)
-                    Log(p2.name + ' attacks ' + p1.name + '. ' + 
+                    damage = p2.attack(p1)
+                    p1.hp -= damage
+                    Log(p2.name + ' attacks ' + p1.name + ' for ' + damage + '. ' + 
                     p1.name + ' has ' + p1.hp + 'hp left.')
                     turn += 1
                 }
