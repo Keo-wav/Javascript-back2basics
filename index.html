@@ -8,12 +8,6 @@
 <body>
     <h1>Chapter 6 : Object Oriented Programming in Javascript</h1>
     <h2>Pokemon fight : Pikachu vs Eevee</h2>
-    <ol>
-        <li>Game start : choose which pokemon strikes first.</li>
-        <li>Pokemons attack turn by turn</li>
-        <li>When a Pokemon hp reaches 0, the other one wins</li>
-    </ol>
-
     <div id="battlelog">
         <!-- Will contain all battle logs -->
     </div>
@@ -74,12 +68,16 @@
             let p2 = pokemon2
             let turn = 0
 
-            if (CoinFlip()) {
+            let coinFlip = CoinFlip()
+            console.log(coinFlip)
+            if (coinFlip) {
                 p1 = pokemon2
                 p2 = pokemon1
                 Log(p1.name + ' starts first !')
             } else {
-                Log(p2.name + ' starts first !')
+                p1 = pokemon1
+                p2 = pokemon2
+                Log(p1.name + ' starts first !')
             }
 
             do {
@@ -91,12 +89,12 @@
                 if (turn % 2 === 0) {
                     p2.hp -= p1.attack(p2)
                     Log(p1.name + ' attacks ' + p2.name + '. ' + 
-                    p2.name + ' has ' + p2.hp + 'hp left.<br /><br />')
+                    p2.name + ' has ' + p2.hp + 'hp left.')
                     turn += 1
                 } else {
                     p1.hp -= p2.attack(p1)
                     Log(p2.name + ' attacks ' + p1.name + '. ' + 
-                    p1.name + ' has ' + p1.hp + 'hp left.<br /><br />')
+                    p1.name + ' has ' + p1.hp + 'hp left.')
                     turn += 1
                 }
             } while (p1.hp > 0 && p2.hp > 0)
