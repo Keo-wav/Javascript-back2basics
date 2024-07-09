@@ -32,20 +32,8 @@
                 this.attack1 = attack1
                 this.attack2 = attack2
             }
-            attack(pokemon) {
-                if (this.hp >= (this.hp * 20) / 100) { 
-                    if (Math.random()*100 >= 90) {
-                        return this.attack1.dmg * 2
-                    } else {
-                        return this.attack1.dmg
-                    }
-                } else { 
-                    if (Math.random()*100 >= 90) {
-                        return this.attack2.dmg * 2
-                    } else {
-                        return this.attack2.dmg
-                    }
-                }
+            attack() {
+                return this.hp >= (this.hp * 20) / 100 ? this.attack1.dmg : this.attack2.dmg;
             }
         }
 
@@ -62,43 +50,49 @@
             p.innerHTML = message;
             log.appendChild(p);
         }
+
+        function LogSpan(message) {
+            let log = document.getElementById('battlelog')
+                let span = document.createElement('span')
+                span.innerHTML = message
+                log.appendChild(span)
+        }
             
         function App(pokemon1, pokemon2) {
             let p1 = pokemon1
             let p2 = pokemon2
             let turn = 0
 
-        function FightInfo(pokemon1, pokemon2) {
-            let log = document.getElementById('battlelog')
-            let span = document.createElement('span')
-            Log(pokemon1.name + ' starts with ' + pokemon1.hp + 'hp. ')
-            Log(pokemon2.name + ' starts with ' + pokemon2.hp + 'hp. ')
-        }
+            function FightInfo(pokemon1, pokemon2) {
+                Log(pokemon1.name + ' has ' + pokemon1.hp + 'hp | ' + pokemon2.name + ' has ' + pokemon2.hp + 'hp. ')
+            }
 
-            let coinFlip = CoinFlip()
-            console.log(coinFlip)
-            if (coinFlip) {
-                p1 = pokemon2
-                p2 = pokemon1
-                Log(p1.name + ' starts first !')
-            } else {
-                p1 = pokemon1
-                p2 = pokemon2
-                Log(p1.name + ' starts first !')
+            if (CoinFlip()) {
+                p1 = pokemon2;
+                p2 = pokemon1;
             }
 
             FightInfo(p1, p2)
+            Log(p1.name + ' starts first !')
 
             do {
                 let damage
                 if (turn % 2 === 0) {
                     damage = p1.attack(p2)
+                    if (Math.random()*100 >= 90) {
+                        damage *= 2
+                        LogSpan('CRIT!')
+                    }
                     p2.hp -= damage
                     Log(p1.name + ' attacks ' + p2.name + ' for ' + damage + '. ' + 
                     p2.name + ' has ' + p2.hp + 'hp left.')
                     turn += 1
                 } else {
                     damage = p2.attack(p1)
+                    if (Math.random()*100 >= 90) {
+                        damage *= 2
+                        LogSpan('CRIT!')
+                    }
                     p1.hp -= damage
                     Log(p2.name + ' attacks ' + p1.name + ' for ' + damage + '. ' + 
                     p1.name + ' has ' + p1.hp + 'hp left.')
