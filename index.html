@@ -54,6 +54,11 @@
             log.appendChild(p);
         }
 
+        function ClearLog() {
+            let log = document.getElementById('battlelog')
+            log.innerHTML = ''
+        }
+
         function Reset(p1, p2) {
             p1.hp = p1.baseHp
             p2.hp = p2.baseHp
@@ -113,6 +118,7 @@
         let resetButton = document.getElementById('reset')
         resetButton.addEventListener('click', () => {
             Reset(pikachu, eevee)
+            ClearLog()
             App(pikachu, eevee)
         })
 
