@@ -8,6 +8,8 @@
 <body>
     <h1>Chapter 6 : Object Oriented Programming in Javascript</h1>
     <h2>Pokemon fight : Pikachu vs Eevee</h2>
+
+    <button id="reset">start game</button>
     <div id="battlelog">
         <!-- Will contain all battle logs -->
     </div>
@@ -50,6 +52,11 @@
             let p = document.createElement('p');
             p.innerHTML = message;
             log.appendChild(p);
+        }
+
+        function Reset(p1, p2) {
+            p1.hp = p1.baseHp
+            p2.hp = p2.baseHp
         }
             
         function App(pokemon1, pokemon2) {
@@ -102,6 +109,14 @@
         }
         
         App(pikachu, eevee)
+
+        let resetButton = document.getElementById('reset')
+        resetButton.addEventListener('click', () => {
+            Reset(pikachu, eevee)
+            App(pikachu, eevee)
+        })
+
+        
     </script>
 </body>
 </html>
