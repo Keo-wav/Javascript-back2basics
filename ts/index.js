@@ -1,2 +1,27 @@
 var aString = 'Hi you fucking nice person';
 console.log(aString);
+var isFake = true;
+console.log(!isFake);
+var devil = 666;
+console.log(devil * 2);
+var cardinalPoints;
+(function (cardinalPoints) {
+    cardinalPoints[cardinalPoints["N"] = 0] = "N";
+    cardinalPoints[cardinalPoints["S"] = 1] = "S";
+    cardinalPoints[cardinalPoints["E"] = 2] = "E";
+    cardinalPoints[cardinalPoints["W"] = 3] = "W";
+})(cardinalPoints || (cardinalPoints = {}));
+var north = cardinalPoints.N;
+var south = cardinalPoints.S;
+var east = cardinalPoints.E;
+var west = cardinalPoints.W;
+console.log(north);
+console.log(south);
+console.log(east);
+console.log(west);
+var tab = [6, 12, 666];
+console.log(tab);
+var noType;
+console.log(noType);
+var anyType;
+console.log(anyType);
