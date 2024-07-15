@@ -81,142 +81,116 @@
 // console.log(EngWords(words))
 // console.log(JapWords(words))
 
-class Vehicle {
+module TestModule {
+    export class Vehicle {
 
-    // CLASS ATTRIBUTES / PROPERTIES
+        // CLASS ATTRIBUTES / PROPERTIES
 
-    private _mileAge: number
-    private _brand: string
-    private _color: string
-    private _owner: string
+        private _mileAge: number
+        private _brand: string
+        private _color: string
+        private _owner: string
 
-    // CONSTRUCTOR
+        // CONSTRUCTOR
 
-    constructor(mileAge:number, brand:string, color:string, owner:string = '') {
-        this._mileAge = mileAge
-        this._brand = brand
-        this._color = color
-        this._owner = owner
-    }
-
-    // GETTERS
-
-    get mileAge() {
-        return this._mileAge
-    }
-
-    get brand() {
-        return this._brand
-    }
-
-    get color() {
-        return this._color
-    }
-    
-    get owner() {
-        return this._owner
-    }
-    
-    // SETTERS
-    
-    set owner(name:string) {
-        if (name !== 'Keo')
-            this._owner = name
-    }
-
-    set color(color:string) {
-        if (color !== this._color)
+        constructor(mileAge:number, brand:string, color:string, owner:string) {
+            this._mileAge = mileAge
+            this._brand = brand
             this._color = color
+            this._owner = owner
+        }
+
+        // GETTERS
+
+        get mileAge() {
+            return this._mileAge
+        }
+
+        get brand() {
+            return this._brand
+        }
+
+        get color() {
+            return this._color
+        }
+        
+        get owner() {
+            return this._owner
+        }
+        
+        // SETTERS
+        
+        set owner(name:string) {
+            if (name !== 'Keo')
+                this._owner = name
+        }
+
+        set color(color:string) {
+            if (color !== this._color)
+                this._color = color
+        }
+        
+        // METHODS
+
+        Presentation() {
+            console.log("BRAND : " + this._brand + " | COLOR : " + this._color + " | OWNER : " + this._owner + " | MILEAGE : " + this._mileAge + ".")
+        }
+
+        GoForward(miles:number) {
+            this._mileAge += miles
+            console.log('The vehicle moves forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
+        }
+
+        GoBackwards(miles:number) {
+            this._mileAge += miles
+            console.log('The vehicle moves backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
+        }
     }
-    
-    // METHODS
 
-    CarPresentation() {
-        console.log("CAR BRAND : " + this._brand + " | CAR COLOR : " + this._color + " | CAR OWNER : " + this._owner + " | CAR MILEAGE : " + this._mileAge + " miles.")
+    export class Car extends Vehicle {
+        private _airbags:boolean
+
+        constructor(mileAge:number, brand:string, color:string, owner:string = '', airbags = false) {
+            super(mileAge, brand, color, owner) // calling parent class ctor
+            this._airbags = airbags
+        }
+
+        get airbags() {
+            return this._airbags
+        }
+
+        set airbags(installAirbags:boolean) {
+            if (installAirbags !== false || this._airbags == false) {
+                this._airbags = true
+            }
+        }
     }
 
-    GoForward(miles:number) {
-        this._mileAge += miles
-        console.log('The car drives forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
-    }
+    export class Plane extends Vehicle {
+        private _country:string
 
-    GoBackwards(miles:number) {
-        this._mileAge += miles
-        console.log('The car drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
-    }
-}
+        get country() {
+            return this._country
+        }
 
-class Car extends Vehicle {
-    private _airbags:boolean
-
-    constructor(mileAge:number, brand:string, color:string, owner:string = '', airbags = false) {
-        super(mileAge, brand, color) // calling parent class ctor
-        this._airbags = airbags
-    }
-
-    get airbags() {
-        return this._airbags
-    }
-
-    set airbags(installAirbags:boolean) {
-        if (installAirbags !== false || this._airbags == false) {
-            this._airbags = true
+        set country(countryName:string) {
+            if (countryName !== '') {
+                this._country = countryName
+            }
         }
     }
 }
 
-class Plane extends Vehicle {
-    private _country:string
+let car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff')
+car.Presentation()
+car.airbags = true
+car.GoForward(6)
+car.Presentation()
 
-    get country() {
-        return this._country
-    }
-
-    set country(countryName:string) {
-        if (countryName !== '') {
-            this._country = countryName
-        }
-    }
-}
-
-let car1 = new Car(1200, 'Volvo', 'Cream')
-// let car2 = new Car(14800, 'Pontiac Trans Am', 'Black', 'David Hasselhoff')
-console.log(car1)
-car1.owner = 'The Dude'
-car1.airbags = true
-console.log(car1)
-// car1.owner = 'Some Dude'
-// console.log(car1)
-// car1.owner = 'Keo' // does not change owner because of setter rule
-// console.log(car1)
-// console.log(car2)
-// car2.color = 'Black' // does not change owner because of setter rule
-// console.log(car2)
-// car2.color = 'Pink'
-// console.log(car2)
-
-// car1.CarPresentation()
-// car2.CarPresentation()
-
-// car1.GoForward(120)
-// car1.CarPresentation()
-
-// car2.GoBackwards(3)
-// car2.CarPresentation()
-
-let airForceOne = new Plane(80000, 'Boeing', 'White', 'POTUS')
-
-console.log(airForceOne)
-
-airForceOne.country = "USA"
-console.log(airForceOne)
-
-airForceOne.country = ''
-
-console.log(airForceOne)
-
-car1.GoForward(4)
-airForceOne.GoForward(437)
-
+let airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS')
+airForce1.Presentation()
+airForce1.owner = "Donald J Trump"
+airForce1.GoForward(1000)
+airForce1.Presentation()
 
 

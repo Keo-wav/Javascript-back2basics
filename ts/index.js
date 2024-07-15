@@ -81,135 +81,121 @@ var __extends = (this && this.__extends) || (function () {
 // console.log(words)
 // console.log(EngWords(words))
 // console.log(JapWords(words))
-var Vehicle = /** @class */ (function () {
-    // CONSTRUCTOR
-    function Vehicle(mileAge, brand, color, owner) {
-        if (owner === void 0) { owner = ''; }
-        this._mileAge = mileAge;
-        this._brand = brand;
-        this._color = color;
-        this._owner = owner;
-    }
-    Object.defineProperty(Vehicle.prototype, "mileAge", {
-        // GETTERS
-        get: function () {
-            return this._mileAge;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Vehicle.prototype, "brand", {
-        get: function () {
-            return this._brand;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Vehicle.prototype, "color", {
-        get: function () {
-            return this._color;
-        },
-        set: function (color) {
-            if (color !== this._color)
-                this._color = color;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Vehicle.prototype, "owner", {
-        get: function () {
-            return this._owner;
-        },
-        // SETTERS
-        set: function (name) {
-            if (name !== 'Keo')
-                this._owner = name;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    // METHODS
-    Vehicle.prototype.CarPresentation = function () {
-        console.log("CAR BRAND : " + this._brand + " | CAR COLOR : " + this._color + " | CAR OWNER : " + this._owner + " | CAR MILEAGE : " + this._mileAge + " miles.");
-    };
-    Vehicle.prototype.GoForward = function (miles) {
-        this._mileAge += miles;
-        console.log('The car drives forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
-    };
-    Vehicle.prototype.GoBackwards = function (miles) {
-        this._mileAge += miles;
-        console.log('The car drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
-    };
-    return Vehicle;
-}());
-var Car = /** @class */ (function (_super) {
-    __extends(Car, _super);
-    function Car(mileAge, brand, color, owner, airbags) {
-        if (owner === void 0) { owner = ''; }
-        if (airbags === void 0) { airbags = false; }
-        var _this = _super.call(this, mileAge, brand, color) || this; // calling parent class ctor
-        _this._airbags = airbags;
-        return _this;
-    }
-    Object.defineProperty(Car.prototype, "airbags", {
-        get: function () {
-            return this._airbags;
-        },
-        set: function (installAirbags) {
-            if (installAirbags !== false || this._airbags == false) {
-                this._airbags = true;
-            }
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Car;
-}(Vehicle));
-var Plane = /** @class */ (function (_super) {
-    __extends(Plane, _super);
-    function Plane() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Object.defineProperty(Plane.prototype, "country", {
-        get: function () {
-            return this._country;
-        },
-        set: function (countryName) {
-            if (countryName !== '') {
-                this._country = countryName;
-            }
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Plane;
-}(Vehicle));
-var car1 = new Car(1200, 'Volvo', 'Cream');
-// let car2 = new Car(14800, 'Pontiac Trans Am', 'Black', 'David Hasselhoff')
-console.log(car1);
-car1.owner = 'The Dude';
-car1.airbags = true;
-console.log(car1);
-// car1.owner = 'Some Dude'
-// console.log(car1)
-// car1.owner = 'Keo' // does not change owner because of setter rule
-// console.log(car1)
-// console.log(car2)
-// car2.color = 'Black' // does not change owner because of setter rule
-// console.log(car2)
-// car2.color = 'Pink'
-// console.log(car2)
-// car1.CarPresentation()
-// car2.CarPresentation()
-// car1.GoForward(120)
-// car1.CarPresentation()
-// car2.GoBackwards(3)
-// car2.CarPresentation()
-var airForceOne = new Plane(80000, 'Boeing', 'White', 'POTUS');
-console.log(airForceOne);
-airForceOne.country = "USA";
-console.log(airForceOne);
-airForceOne.country = '';
-console.log(airForceOne);
-car1.GoForward(4);
-airForceOne.GoForward(437);
+var TestModule;
+(function (TestModule) {
+    var Vehicle = /** @class */ (function () {
+        // CONSTRUCTOR
+        function Vehicle(mileAge, brand, color, owner) {
+            this._mileAge = mileAge;
+            this._brand = brand;
+            this._color = color;
+            this._owner = owner;
+        }
+        Object.defineProperty(Vehicle.prototype, "mileAge", {
+            // GETTERS
+            get: function () {
+                return this._mileAge;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(Vehicle.prototype, "brand", {
+            get: function () {
+                return this._brand;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(Vehicle.prototype, "color", {
+            get: function () {
+                return this._color;
+            },
+            set: function (color) {
+                if (color !== this._color)
+                    this._color = color;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(Vehicle.prototype, "owner", {
+            get: function () {
+                return this._owner;
+            },
+            // SETTERS
+            set: function (name) {
+                if (name !== 'Keo')
+                    this._owner = name;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        // METHODS
+        Vehicle.prototype.Presentation = function () {
+            console.log("BRAND : " + this._brand + " | COLOR : " + this._color + " | OWNER : " + this._owner + " | MILEAGE : " + this._mileAge + ".");
+        };
+        Vehicle.prototype.GoForward = function (miles) {
+            this._mileAge += miles;
+            console.log('The vehicle drives forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
+        };
+        Vehicle.prototype.GoBackwards = function (miles) {
+            this._mileAge += miles;
+            console.log('The vehicle drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
+        };
+        return Vehicle;
+    }());
+    TestModule.Vehicle = Vehicle;
+    var Car = /** @class */ (function (_super) {
+        __extends(Car, _super);
+        function Car(mileAge, brand, color, owner, airbags) {
+            if (owner === void 0) { owner = ''; }
+            if (airbags === void 0) { airbags = false; }
+            var _this = _super.call(this, mileAge, brand, color, owner) || this; // calling parent class ctor
+            _this._airbags = airbags;
+            return _this;
+        }
+        Object.defineProperty(Car.prototype, "airbags", {
+            get: function () {
+                return this._airbags;
+            },
+            set: function (installAirbags) {
+                if (installAirbags !== false || this._airbags == false) {
+                    this._airbags = true;
+                }
+            },
+            enumerable: false,
+            configurable: true
+        });
+        return Car;
+    }(Vehicle));
+    TestModule.Car = Car;
+    var Plane = /** @class */ (function (_super) {
+        __extends(Plane, _super);
+        function Plane() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Object.defineProperty(Plane.prototype, "country", {
+            get: function () {
+                return this._country;
+            },
+            set: function (countryName) {
+                if (countryName !== '') {
+                    this._country = countryName;
+                }
+            },
+            enumerable: false,
+            configurable: true
+        });
+        return Plane;
+    }(Vehicle));
+    TestModule.Plane = Plane;
+})(TestModule || (TestModule = {}));
+var car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff');
+car.Presentation();
+car.airbags = true;
+car.GoForward(6);
+car.Presentation();
+var airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS');
+airForce1.Presentation();
+airForce1.owner = "Donald J Trump";
+airForce1.GoForward(1000);
+airForce1.Presentation();
