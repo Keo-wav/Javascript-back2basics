@@ -55,47 +55,118 @@
 // }
 // console.log(complexOperation(6, 9, 3))
 
-let words: string[] = ['thank you', 'arigato', 'hello', 'konichiwa', 'my name is', 'watashiwa', 'damn', 'kuso', 'pervert', 'hentai']
+// let words: string[] = ['thank you', 'arigato', 'hello', 'konichiwa', 'my name is', 'watashiwa', 'damn', 'kuso', 'pervert', 'hentai']
 
-function EngWords(tab:string[]):string[] {
-    let englishWordsTab: string[] = []
-    for (let i = 0; i<tab.length; i++) {
-        if (i % 2 === 0) {
-            englishWordsTab.push(tab[i])
-        }
-    }
-    return englishWordsTab
-}
+// function EngWords(tab:string[]):string[] {
+//     let englishWordsTab: string[] = []
+//     for (let i = 0; i<tab.length; i++) {
+//         if (i % 2 === 0) {
+//             englishWordsTab.push(tab[i])
+//         }
+//     }
+//     return englishWordsTab
+// }
 
-function JapWords(tab:string[]):string[] {
-    let japaneseWordsTab: string[] = []
-    for (let i = 0; i<tab.length; i++) {
-        if (i % 2 !== 0) {
-            japaneseWordsTab.push(tab[i])
-        }
-    }
-    return japaneseWordsTab
-}
+// function JapWords(tab:string[]):string[] {
+//     let japaneseWordsTab: string[] = []
+//     for (let i = 0; i<tab.length; i++) {
+//         if (i % 2 !== 0) {
+//             japaneseWordsTab.push(tab[i])
+//         }
+//     }
+//     return japaneseWordsTab
+// }
 
 // console.log(words)
 // console.log(EngWords(words))
 // console.log(JapWords(words))
 
 class Car {
+
+    // CLASS ATTRIBUTES / PROPERTIES
+
     private _mileAge: number
     private _brand: string
     private _color: string
     private _owner: string
 
-    constructor(mileAge, brand, color, owner) {
+    // CONSTRUCTOR
+
+    constructor(mileAge:number, brand:string, color:string, owner:string = '') {
         this._mileAge = mileAge
         this._brand = brand
         this._color = color
         this._owner = owner
     }
+
+    // GETTERS
+
+    get mileAge() {
+        return this._mileAge
+    }
+
+    get brand() {
+        return this._brand
+    }
+
+    get color() {
+        return this._color
+    }
+    
+    get owner() {
+        return this._owner
+    }
+    
+    // SETTERS
+    
+    set owner(name:string) {
+        if (name !== 'Keo')
+            this._owner = name
+    }
+
+    set color(color:string) {
+        if (color !== this._color)
+            this._color = color
+    }
+    
+    // METHODS
+
+    CarPresentation() {
+        console.log("CAR BRAND : " + this._brand + " | CAR COLOR : " + this._color + " | CAR OWNER : " + this._owner + " | CAR MILEAGE : " + this._mileAge + " miles.")
+    }
+
+    GoForward(miles:number) {
+        this._mileAge += miles
+        console.log('The car drives forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
+    }
+
+    GoBackwards(miles:number) {
+        this._mileAge += miles
+        console.log('The car drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
+    }
+
 }
 
-let car1 = new Car(1200, 'Volvo', 'Cream', 'The Dude')
-let car2 = new Car(14800, 'Something really American', 'Black', 'David Hasselhoff')
+let car1 = new Car(1200, 'Volvo', 'Cream')
+let car2 = new Car(14800, 'Pontiac Trans Am', 'Black', 'David Hasselhoff')
+console.log(car1)
+car1.owner = 'Some Dude'
+console.log(car1)
+car1.owner = 'Keo' // does not change owner because of setter rule
 console.log(car1)
 console.log(car2)
+car2.color = 'Black' // does not change owner because of setter rule
+console.log(car2)
+car2.color = 'Pink'
+console.log(car2)
+
+car1.CarPresentation()
+car2.CarPresentation()
+
+car1.GoForward(120)
+car1.CarPresentation()
+
+car2.GoBackwards(3)
+car2.CarPresentation()
+
+
