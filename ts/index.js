@@ -135,11 +135,11 @@ var TestModule;
         };
         Vehicle.prototype.GoForward = function (miles) {
             this._mileAge += miles;
-            console.log('The vehicle drives forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
+            console.log('The vehicle moves forward by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
         };
         Vehicle.prototype.GoBackwards = function (miles) {
             this._mileAge += miles;
-            console.log('The vehicle drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
+            console.log('The vehicle moves backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.');
         };
         return Vehicle;
     }());
@@ -189,13 +189,13 @@ var TestModule;
     }(Vehicle));
     TestModule.Plane = Plane;
 })(TestModule || (TestModule = {}));
-var car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff');
-car.Presentation();
-car.airbags = true;
-car.GoForward(6);
-car.Presentation();
-var airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS');
-airForce1.Presentation();
-airForce1.owner = "Donald J Trump";
-airForce1.GoForward(1000);
-airForce1.Presentation();
+// let car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff')
+// car.Presentation()
+// car.airbags = true
+// car.GoForward(6)
+// car.Presentation()
+// let airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS')
+// airForce1.Presentation()
+// airForce1.owner = "Donald J Trump"
+// airForce1.GoForward(1000)
+// airForce1.Presentation()

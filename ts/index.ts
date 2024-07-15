@@ -181,16 +181,16 @@ module TestModule {
     }
 }
 
-let car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff')
-car.Presentation()
-car.airbags = true
-car.GoForward(6)
-car.Presentation()
+// let car = new TestModule.Car(0, 'Pontiac Trans Am', 'Black', 'David Hasslehoff')
+// car.Presentation()
+// car.airbags = true
+// car.GoForward(6)
+// car.Presentation()
 
-let airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS')
-airForce1.Presentation()
-airForce1.owner = "Donald J Trump"
-airForce1.GoForward(1000)
-airForce1.Presentation()
+// let airForce1 = new TestModule.Plane(1000, 'Boeing', 'White', 'POTUS')
+// airForce1.Presentation()
+// airForce1.owner = "Donald J Trump"
+// airForce1.GoForward(1000)
+// airForce1.Presentation()
 
 
