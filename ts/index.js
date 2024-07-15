@@ -37,14 +37,13 @@
 // }
 // console.log(Add(5, 7))
 // console.log(SaltyGreet('Nicolas'))
-// anonymous function with lambda
-var complexOperation = function (a, b, c) {
-    var result = 0;
-    result += a * c;
-    result /= b;
-    return result;
-};
-console.log(complexOperation(6, 9, 3));
+// function with lambda
+// let complexOperation = (a:number, b:number, c:number) => {
+//     let result:number = 0
+//     result += ((a * c) / b ) * (Math.random() * 100)
+//     return Math.round(result)
+// }
+// console.log(complexOperation(6, 9, 3))
 var words = ['thank you', 'arigato', 'hello', 'konichiwa', 'my name is', 'watashiwa', 'damn', 'kuso', 'pervert', 'hentai'];
 function EngWords(tab) {
     var englishWordsTab = [];
@@ -67,3 +66,16 @@ function JapWords(tab) {
 // console.log(words)
 // console.log(EngWords(words))
 // console.log(JapWords(words))
+var Car = /** @class */ (function () {
+    function Car(mileAge, brand, color, owner) {
+        this._mileAge = mileAge;
+        this._brand = brand;
+        this._color = color;
+        this._owner = owner;
+    }
+    return Car;
+}());
+var car1 = new Car(1200, 'Volvo', 'Cream', 'The Dude');
+var car2 = new Car(14800, 'Something really American', 'Black', 'David Hasselhoff');
+console.log(car1);
+console.log(car2);

@@ -50,8 +50,8 @@
 // function with lambda
 // let complexOperation = (a:number, b:number, c:number) => {
 //     let result:number = 0
-//     result += (a * c) / b
-//     return result
+//     result += ((a * c) / b ) * (Math.random() * 100)
+//     return Math.round(result)
 // }
 // console.log(complexOperation(6, 9, 3))
 
@@ -80,3 +80,22 @@ function JapWords(tab:string[]):string[] {
 // console.log(words)
 // console.log(EngWords(words))
 // console.log(JapWords(words))
+
+class Car {
+    private _mileAge: number
+    private _brand: string
+    private _color: string
+    private _owner: string
+
+    constructor(mileAge, brand, color, owner) {
+        this._mileAge = mileAge
+        this._brand = brand
+        this._color = color
+        this._owner = owner
+    }
+}
+
+let car1 = new Car(1200, 'Volvo', 'Cream', 'The Dude')
+let car2 = new Car(14800, 'Something really American', 'Black', 'David Hasselhoff')
+console.log(car1)
+console.log(car2)
