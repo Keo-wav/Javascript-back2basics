@@ -81,7 +81,7 @@
 // console.log(EngWords(words))
 // console.log(JapWords(words))
 
-class Car {
+class Vehicle {
 
     // CLASS ATTRIBUTES / PROPERTIES
 
@@ -144,29 +144,79 @@ class Car {
         this._mileAge += miles
         console.log('The car drives backwards by ' + miles + ' miles. Its mileage is now ' + this._mileAge + '.')
     }
+}
 
+class Car extends Vehicle {
+    private _airbags:boolean
+
+    constructor(mileAge:number, brand:string, color:string, owner:string = '', airbags = false) {
+        super(mileAge, brand, color) // calling parent class ctor
+        this._airbags = airbags
+    }
+
+    get airbags() {
+        return this._airbags
+    }
+
+    set airbags(installAirbags:boolean) {
+        if (installAirbags !== false || this._airbags == false) {
+            this._airbags = true
+        }
+    }
+}
+
+class Plane extends Vehicle {
+    private _country:string
+
+    get country() {
+        return this._country
+    }
+
+    set country(countryName:string) {
+        if (countryName !== '') {
+            this._country = countryName
+        }
+    }
 }
 
 let car1 = new Car(1200, 'Volvo', 'Cream')
-let car2 = new Car(14800, 'Pontiac Trans Am', 'Black', 'David Hasselhoff')
+// let car2 = new Car(14800, 'Pontiac Trans Am', 'Black', 'David Hasselhoff')
 console.log(car1)
-car1.owner = 'Some Dude'
+car1.owner = 'The Dude'
+car1.airbags = true
 console.log(car1)
-car1.owner = 'Keo' // does not change owner because of setter rule
-console.log(car1)
-console.log(car2)
-car2.color = 'Black' // does not change owner because of setter rule
-console.log(car2)
-car2.color = 'Pink'
-console.log(car2)
+// car1.owner = 'Some Dude'
+// console.log(car1)
+// car1.owner = 'Keo' // does not change owner because of setter rule
+// console.log(car1)
+// console.log(car2)
+// car2.color = 'Black' // does not change owner because of setter rule
+// console.log(car2)
+// car2.color = 'Pink'
+// console.log(car2)
 
-car1.CarPresentation()
-car2.CarPresentation()
+// car1.CarPresentation()
+// car2.CarPresentation()
 
-car1.GoForward(120)
-car1.CarPresentation()
+// car1.GoForward(120)
+// car1.CarPresentation()
 
-car2.GoBackwards(3)
-car2.CarPresentation()
+// car2.GoBackwards(3)
+// car2.CarPresentation()
+
+let airForceOne = new Plane(80000, 'Boeing', 'White', 'POTUS')
+
+console.log(airForceOne)
+
+airForceOne.country = "USA"
+console.log(airForceOne)
+
+airForceOne.country = ''
+
+console.log(airForceOne)
+
+car1.GoForward(4)
+airForceOne.GoForward(437)
+
 
 
